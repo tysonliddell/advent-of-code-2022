@@ -1,6 +1,5 @@
 from typing import List
 
-
 DECODER = {
     "A": "ROCK",
     "B": "PAPER",
@@ -23,7 +22,7 @@ STRONG_AGAINST = {
     "SCISSORS": "PAPER",
 }
 
-WEAK_AGAINST = {v: k for k,v in STRONG_AGAINST.items()}
+WEAK_AGAINST = {v: k for k, v in STRONG_AGAINST.items()}
 
 
 def _decode(data: List[List[str]]):
@@ -42,7 +41,7 @@ def _get_p2_choice(p1: str, result_needed: str):
 def get_p2_total_score(data: List[List[str]]):
     games = _decode(data)
     total = 0
-    for p1,result_needed in games:
+    for p1, result_needed in games:
         p2 = _get_p2_choice(p1, result_needed)
 
         # add score for p2's choice

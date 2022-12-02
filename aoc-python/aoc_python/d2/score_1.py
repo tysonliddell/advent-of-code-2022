@@ -1,6 +1,5 @@
 from typing import List
 
-
 DECODER = {
     "A": "ROCK",
     "B": "PAPER",
@@ -31,7 +30,7 @@ def _decode(data: List[List[str]]):
 def get_p2_total_score(data: List[List[str]]):
     games = _decode(data)
     total = 0
-    for p1,p2 in games:
+    for p1, p2 in games:
         # add score for p2's choice
         total += START_SCORE[p2]
 
