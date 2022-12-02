@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "aoc-python"
+version = "0.1.0"
+description = "Contains solutions to Advent of Code 2022 in Python."
+authors = ["Tyson Liddell <tysonliddell@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "aoc_python"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pycrypto = "^2.6.1"
+keyring = "^23.11.0"
+requests = "^2.28.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
