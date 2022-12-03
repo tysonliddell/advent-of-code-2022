@@ -26,3 +26,6 @@ flake8 = "flake8 ."
 isort = "isort ."
 lint.sequence = ["black", "flake8", "isort"]
 lint.ignore_fail = "return_zero"
+
+[tool.black]
+line-length = 120
