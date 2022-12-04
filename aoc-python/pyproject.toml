@@ -21,10 +21,10 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-black = "black ."
-flake8 = "flake8 ."
-isort = "isort ."
-mypy = "mypy ."
+black = "black aoc_python"
+flake8 = "flake8 aoc_python"
+isort = "isort aoc_python"
+mypy = "mypy aoc_python"
 lint.sequence = ["black", "flake8", "isort", "mypy"]
 lint.ignore_fail = "return_zero"
 
