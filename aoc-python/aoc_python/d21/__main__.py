@@ -1,7 +1,4 @@
-from math import ceil
-from aoc_python.common.utils import get_day_n_input
-from aoc_python.d20.decrypt import decrypt
-# from functools import cache
+from operator import add, floordiv, mul, sub
 
 TEST_DATA = """root: pppw + sjmn
 dbpl: 5
@@ -19,14 +16,15 @@ lgvd: ljgn * ptdq
 drzm: hmdt - zczc
 hmdt: 32""".splitlines()
 
+
 def main():
     data = TEST_DATA
     # data = get_day_n_input(21)
-    lookup_table = {k: _parse_job(v) for k,v in [line.split(":") for line in data]}
+    lookup_table = {k: _parse_job(v) for k, v in [line.split(":") for line in data]}
     print(get_root(lookup_table))
     print(get_needed_human_shout(lookup_table))
 
-from operator import mul, add, sub, floordiv
+
 op_table = {
     "+": add,
     "-": sub,
@@ -40,6 +38,7 @@ inverse_op_table = {
     "*": "/",
     "/": "*",
 }
+
 
 def has_child(monkey, target, table):
     if monkey == target:
@@ -73,10 +72,11 @@ def has_child(monkey, target, table):
 def get_needed_human_shout(lookup_table):
     cache = {}
     operation_seq = []
+
     def get_val(monkey, has_child):
         # if monkey == "humn":
-            # print("HUMAN:", lookup_table[monkey])
-            # breakpoint()
+        # print("HUMAN:", lookup_table[monkey])
+        # breakpoint()
         if monkey in cache:
             return cache[monkey]
 
@@ -107,15 +107,15 @@ def get_needed_human_shout(lookup_table):
             else:
                 cache[arg2] = val
             arg2 = val
-        
+
         # print(f"{arg1} {op} {arg2}")
         operation_seq.append((arg1, op, arg2, ancestor))
         return op_table[op](arg1, arg2)
 
     has_child_table = has_child("root", "humn", lookup_table)
-    val = get_val("root", has_child_table)
+    get_val("root", has_child_table)
     operation_seq = []
-    val = get_val("root", has_child_table)
+    get_val("root", has_child_table)
 
     # print("VAL:", val)
     target = 0
@@ -148,7 +148,6 @@ def get_needed_human_shout(lookup_table):
     return target
 
 
-
 def get_root(lookup_table):
     def get_val(monkey):
         tokens = lookup_table[monkey]
@@ -165,13 +164,15 @@ def get_root(lookup_table):
             arg2 = int(arg2)
         except ValueError:
             arg2 = get_val(arg2)
-        
+
         return op_table[op](arg1, arg2)
-    
+
     return get_val("root")
+
 
 def _parse_job(s: str):
     tokens = s.strip().split(" ")
     return tokens
+
 
 main()
