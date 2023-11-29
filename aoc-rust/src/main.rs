@@ -19,6 +19,4 @@ fn main() {
         1 => day1::run(cli.part),
         _ => println!("Day {} not implemented", cli.day),
     }
-
-    println!("{} {}", cli.day, cli.part);
 }
